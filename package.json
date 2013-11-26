@@ -1,0 +1,15 @@
+{
+  "name": "ShopifyTObot",
+  "description": "A bot",
+  "version": "0.0.1",
+  "author": {
+    "name": "Rich Gilbank",
+    "email": "richgilbank@gmail.com"
+  },
+  "dependencies": {
+    "twit": ">=0.1.4",
+    "underscore": ">=1.4.4",
+    "coffee-script": ">=1.6.3",
+    "underscore.deferred": ">=0.4.0"
+  }
+}
