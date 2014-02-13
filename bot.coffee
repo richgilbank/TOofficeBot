@@ -35,5 +35,5 @@ pickRandom = (obj) ->
 # Run it!
 # loadWords()
 tweetOnce()
-setInterval(tweetOnce, 60*5)
+setInterval(tweetOnce, 1000*60*60)
 
