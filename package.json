@@ -1,5 +1,6 @@
 {
-  "name": "ShopifyTObot",
+  "name": "TOofficeBot",
+  "repository": "https://github.com/richgilbank/ShopifyTObot",
   "description": "A bot",
   "version": "0.0.1",
   "author": {
@@ -9,7 +10,7 @@
   "dependencies": {
     "twit": ">=0.1.4",
     "underscore": ">=1.4.4",
-    "coffee-script": ">=1.6.3",
+    "coffee-script": ">=1.7.1",
     "underscore.deferred": ">=0.4.0"
   }
 }
