@@ -33,7 +33,5 @@ pickRandom = (obj) ->
 
 
 # Run it!
-# loadWords()
 tweetOnce()
-setInterval(tweetOnce, 1000*60*60*12)
 
