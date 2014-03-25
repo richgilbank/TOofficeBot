@@ -11,6 +11,7 @@
     "twit": ">=0.1.4",
     "underscore": ">=1.4.4",
     "coffee-script": ">=1.7.1",
-    "underscore.deferred": ">=0.4.0"
+    "underscore.deferred": ">=0.4.0",
+    "node-schedule": "~0.1.13"
   }
 }

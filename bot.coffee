@@ -2,6 +2,7 @@ config            = require './config.js'
 Twit              = require 'twit'
 _                 = require 'underscore'
 GoogleSpreadsheet = require './lib/google_spreadsheet'
+schedule          = require 'node-schedule'
 _.mixin require('underscore.deferred')
 
 twit = new Twit config.twit
@@ -32,6 +33,10 @@ pickRandom = (obj) ->
   obj[Math.round(Math.random() * obj.length)]
 
 
+rule = new schedule.RecurrenceRule()
+# heroku runs at EST+4
+rule.hour = 16
+
 # Run it!
-tweetOnce()
+schedule.scheduleJob rule, tweetOnce
 
