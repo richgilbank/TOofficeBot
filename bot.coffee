@@ -20,6 +20,6 @@ console.log process.env
 app = express()
 app.get '/random', (req, res) ->
   res.send shitDanSays.pickRandom()
-port = if process.env.DEFAULT_USER is 'richgilbank' then 3000 else 80
+port = process.env.PORT || 3000
 app.listen port
 
