@@ -14,9 +14,12 @@ rule.hour = 16 # heroku runs at EST+4
 # Run it!
 schedule.scheduleJob rule, shitDanSays.tweetOnce
 
+console.log process.env
+
 # Web interface
 app = express()
 app.get '/random', (req, res) ->
   res.send shitDanSays.pickRandom()
-app.listen 3000
+port = if process.env.DEFAULT_USER is 'richgilbank' then 3000 else 80
+app.listen port
 
