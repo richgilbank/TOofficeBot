@@ -1,42 +1,22 @@
-config            = require './config.js'
-Twit              = require 'twit'
-_                 = require 'underscore'
-GoogleSpreadsheet = require './lib/google_spreadsheet'
-schedule          = require 'node-schedule'
+ShitDanSays = require './lib/shit_dan_says'
+schedule    = require 'node-schedule'
+express     = require 'express'
+_           = require 'underscore'
 _.mixin require('underscore.deferred')
 
-twit = new Twit config.twit
-words = []
-shitDanSaysKey = "0An83nE2S7sImdExNVVhENWxyNG1oN29rWWRWSUNiU3c"
 
-twitOptions =
-  owner_screen_name:  config.twitter.owner_screen_name
-  slug:               config.twitter.slug
-  include_rts:        true
+shitDanSays = new ShitDanSays()
 
-sendTweet = (tweet) ->
-  tweet = "Shit Dan says: '#{tweet}'"
-  try
-    twit.post 'statuses/update', {status: tweet}, (err, reply) ->
-      console.log "Tweeting error: ", err
-      console.log "Tweet reply: ", reply
-  catch e
-    console.log "ERROR: ", e
-
-tweetOnce = ()->
-  googleSpreadsheet = new GoogleSpreadsheet()
-  googleSpreadsheet.load shitDanSaysKey, (result) ->
-    tweet = pickRandom(result)
-    sendTweet tweet
-
-pickRandom = (obj) ->
-  obj[Math.round(Math.random() * obj.length)]
-
-
+# Scheduled
 rule = new schedule.RecurrenceRule()
-# heroku runs at EST+4
-rule.hour = 16
+rule.hour = 16 # heroku runs at EST+4
 
 # Run it!
-schedule.scheduleJob rule, tweetOnce
+schedule.scheduleJob rule, shitDanSays.tweetOnce
+
+# Web interface
+app = express()
+app.get '/random', (req, res) ->
+  res.send shitDanSays.pickRandom()
+app.listen 3000
 
