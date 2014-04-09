@@ -9,8 +9,8 @@ shitDanSays = new ShitDanSays()
 
 # Scheduled
 rule = new schedule.RecurrenceRule()
-rule.hour = 21 # heroku runs at EST+4
-rule.minute = 17
+rule.hour = 16 # heroku runs at EST+4
+rule.minute = 0
 
 # Run it!
 schedule.scheduleJob rule, shitDanSays.tweetOnce
